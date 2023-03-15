@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee_data</title>
+    <style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1 align="center", style="color:Blue">Data has been fetched from the Employee table from HRConnect database as per the request.</h1>
+<table align="center" style="width:60%">
+  <tr>
+    <th>Hire_Date</th>
+    <th>Employees_Names</th>
+
+  </tr>
+{% for line in data %}
+    <tr>
+    <td>{{ line.Hire_Date }}</td>
+    <td>{{ line.Employee_names }}</td>
+
+  </tr>
+
+{% endfor %}
+</table>
+</body>
+</html>
