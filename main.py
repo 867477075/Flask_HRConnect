@@ -34,8 +34,8 @@ def main():
 def main2():
     with conn:
         with conn.cursor() as cursor:
-            data2 = []
-            sql = "select first_name,last_name,hire_date from employees where salary >= {0} and department_id between" \
+            data2 = {}
+            sql = "select first_name,last_name,hire_date from employees where salary >= {0} AND department_id between" \
                   " {1} AND {2};".format(4200, 30, 110)
             cursor.execute(sql)
             result = cursor.fetchall()
@@ -43,9 +43,11 @@ def main2():
                 first_name, last_name, hire_date = i
                 hire_date = datetime.datetime.strptime(hire_date, "%d-%b-%y")
                 hire_date = hire_date.strftime("%Y-%d-%m")
-                data2.append({"Hire_Date":hire_date, "Employee_names": first_name + " " + last_name})
-
-
+                if hire_date not in data2:
+                    data2[hire_date] = [first_name + " " + last_name]
+                else:
+                    data2[hire_date].append(first_name + " " + last_name)
+            pprint(data2)
     return render_template("task2.html", data=data2)
 
 

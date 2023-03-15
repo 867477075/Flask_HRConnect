@@ -18,10 +18,10 @@ table, th, td {
     <th>Employees_Names</th>
 
   </tr>
-{% for line in data %}
+{% for keys,values in data.items() %}
     <tr>
-    <td>{{ line.Hire_Date }}</td>
-    <td>{{ line.Employee_names }}</td>
+    <td>{{ keys }}</td>
+    <td>{{ values }}</td>
 
   </tr>
 
