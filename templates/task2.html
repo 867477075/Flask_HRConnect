@@ -21,7 +21,7 @@ table, th, td {
 {% for keys,values in data.items() %}
     <tr>
     <td>{{ keys }}</td>
-    <td>{{ values }}</td>
+    <td>{{ ",".join(values) }}</td>
 
   </tr>
 
